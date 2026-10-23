@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Tota 🎂</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+            background: linear-gradient(135deg, #321447, #704080, #b17ac5);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            padding: 30px 20px;
+            border-radius: 25px;
+            background: rgba(255, 255, 255, 0.12);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        h1 {
+            color: #ffd6f2;
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .cake {
+            font-size: 75px;
+            margin: 15px 0;
+            animation: bounce 2s infinite;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            direction: ltr;
+            margin: 25px 0;
+        }
+
+        .time-box {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 12px 5px;
+            border-radius: 15px;
+            flex: 1;
+        }
+
+        .time-box span {
+            display: block;
+        }
+
+        .number {
+            font-size: 28px;
+            font-weight: bold;
+            color: #ffe0f5;
+        }
+
+        .label {
+            font-size: 13px;
+            margin-top: 5px;
+        }
+
+        button {
+            border: none;
+            border-radius: 30px;
+            padding: 14px 22px;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 8px;
+            background: #ffd6f2;
+            color: #4a205c;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .surprise {
+            display: none;
+            margin-top: 25px;
+            font-size: 20px;
+            line-height: 1.8;
+            color: #ffe0f5;
+            animation: appear 1s;
+        }
+
+        .song-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 14px 22px;
+            border-radius: 30px;
+            text-decoration: none;
+            color: #4a205c;
+            background: white;
+            font-weight: bold;
+        }
+
+        .heart {
+            position: fixed;
+            bottom: -30px;
+            font-size: 25px;
+            animation: floatUp 6s linear forwards;
+            pointer-events: none;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes appear {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes floatUp {
+            to {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="cake">🎂</div>
+
+        <h1>Happy Birthday<br>Tota ❤️</h1>
+
+        <p class="subtitle">
+            مستعدة للمفاجأة يا توتا؟ 🎀
+        </p>
+
+        <div class="countdown">
+
+            <div class="time-box">
+                <span class="number" id="days">00</span>
+                <span class="label">يوم</span>
+            </div>
+
+            <div class="time-box">
+                <span class="number" id="hours">00</span>
+                <span class="label">ساعة</span>
+            </div>
+
+            <div class="time-box">
+                <span class="number" id="minutes">00</span>
+                <span class="label">دقيقة</span>
+            </div>
+
+            <div class="time-box">
+                <span class="number" id="seconds">00</span>
+                <span class="label">ثانية</span>
+            </div>
+
+        </div>
+
+        <button onclick="showSurprise()">
+            دوسي هنا يا Tota 🎁
+        </button>
+
+        <div class="surprise" id="surprise">
+
+            <div class="cake">🎂🎉</div>
+
+            كل سنة وانتي طيبة يا توتا ❤️<br>
+
+            وعقبال سنين كتير كلها فرحة وضحك<br>
+
+            وتفضلي دايمًا مبسوطة ومنورة الدنيا ✨<br>
+
+            بحبك يا أحلى صاحبة 💗
+
+        </div>
+
+        <br>
+
+        <a class="song-button"
+           href="https://vt.tiktok.com/ZSgmuAeQa/"
+           target="_blank">
+            شغّلي الأغنية يا توتا 🎶
+        </a>
+
+    </div>
+
+    <script>
+
+        // تاريخ عيد ميلاد توتا
+        // 8 نوفمبر 2026
+
+        const birthday = new Date(2026, 10, 8, 0, 0, 0);
+
+        function updateCountdown() {
+
+            const now = new Date();
+
+            let difference = birthday - now;
+
+            if (difference < 0) {
+                difference = 0;
+            }
+
+            const days = Math.floor(
+                difference / (1000 * 60 * 60 * 24)
+            );
+
+            const hours = Math.floor(
+                (difference / (1000 * 60 * 60)) % 24
+            );
+
+            const minutes = Math.floor(
+                (difference / (1000 * 60)) % 60
+            );
+
+            const seconds = Math.floor(
+                (difference / 1000) % 60
+            );
+
+            document.getElementById("days").textContent = days;
+
+            document.getElementById("hours").textContent =
+                String(hours).padStart(2, "0");
+
+            document.getElementById("minutes").textContent =
+                String(minutes).padStart(2, "0");
+
+            document.getElementById("seconds").textContent =
+                String(seconds).padStart(2, "0");
+
+            if (now >= birthday) {
+                document.querySelector(".subtitle").textContent =
+                    "النهارده عيد ميلادك يا توتا! 🎉";
+            }
+        }
+
+        function showSurprise() {
+
+            document.getElementById("surprise").style.display = "block";
+
+            // ظهور قلوب متحركة
+            for (let i = 0; i < 20; i++) {
+
+                const heart = document.createElement("div");
+
+                heart.className = "heart";
+
+                const emojis = ["💗", "💜", "🎀", "✨"];
+
+                heart.textContent =
+                    emojis[Math.floor(Math.random() * emojis.length)];
+
+                heart.style.left = Math.random() * 100 + "vw";
+
+                heart.style.animationDelay =
+                    Math.random() * 3 + "s";
+
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 9000);
+            }
+        }
+
+        // تحديث العداد كل ثانية
+        updateCountdown();
+
+        setInterval(updateCountdown, 1000);
+
+    </script>
+
+</body>
+</html>
